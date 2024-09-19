@@ -1,0 +1,2 @@
+# Introduce Yourself
+I am Prayushi Khandelwal a current student at Boston University Metropolitian College studying Computer Science. I really enjoy working in Python and PHP. I am a 23 year old from India and I this is my first semester at Boston University. I have always been intrested in Software Engineering, hence I am really excited about this class.
