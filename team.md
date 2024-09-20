@@ -11,3 +11,6 @@ Hi, I am Vignesh Swaminathan and i am from India. I hold a Bachelor's degree in 
 
 Name: Dirgha Jivani
 Introduction: Hi, I'm Dirgha Jivani! I'm currently pursuing my Master's in Computer Science at BU MET and this is my first semester. With a Bachelor's in Computer Science, I have some experience working with Python, C++, and other frameworks on AI/ML projects. I have also published multiple research papers. I’m super excited about diving into software engineering course, especially since it means working on an end-to-end group project. I know it’ll be a great way to improve both my programming skills and my soft skills!
+
+Name: Anshul Raj
+Hello, My name is Anshul Raj, and I am currently pursuing a Master's Degree in Computer Science. I completed my undergraduate degree in Computer Science in India and have three years of professional experience, with my most recent position being a Data Scientist. I am proficient in Python, Shell Scripting, Docker, and Git, and I have hands-on experience with tools like JIRA, Jenkins, proxmox, etc which I used in various projects during my career.
