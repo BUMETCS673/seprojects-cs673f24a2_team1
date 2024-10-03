@@ -37,8 +37,3 @@ ehthumbs.db
 .vscode/
 .idea/
 *.iml
-
-# Docker
-*.dockerignore
-Dockerfile
-docker-compose.yml

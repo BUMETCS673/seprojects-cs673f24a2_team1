@@ -1,0 +1,27 @@
+version: '3'
+services:
+  backend:
+    build:
+      context: ./server
+    container_name: menumatch_server
+    ports:
+      - "5005:5000"
+    volumes:
+      - ./server:/app
+    environment:
+      - FLASK_ENV=development
+
+  frontend:
+    build:
+      context: ./webapp
+      dockerfile: ./Dockerfile
+    container_name: menumatch_webapp
+    ports:
+      - "8005:80"
+
+  # db:
+  #   image: sqlite
+  #   container_name: sqlite_db
+  #   volumes:
+  #     - ./server/database.sqlite:/data/database.sqlite
+  #   command: tail -f /dev/null
