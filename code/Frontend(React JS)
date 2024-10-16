@@ -1,0 +1,96 @@
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+
+const PreferencesForm = () => {
+  // State to manage form data
+  const [formData, setFormData] = useState({
+    dietary: '',
+    location: '',
+    distance_radius: 5,
+  });
+
+  // Fetch current profile data on component mount
+  useEffect(() => {
+    const fetchProfile = async () => {
+      const token = localStorage.getItem('token'); // Assuming JWT is stored in localStorage
+      if (token) {
+        try {
+          const response = await axios.get('http://localhost:5000/profile', {
+            headers: { Authorization: `Bearer ${token}` },
+          });
+          if (response.data.preferences) {
+            setFormData(response.data.preferences); // Set the fetched preferences in form data
+          }
+        } catch (error) {
+          console.error('Error fetching profile:', error);
+        }
+      }
+    };
+    fetchProfile();
+  }, []);
+
+  // Handle input changes
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  // Handle form submission
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const token = localStorage.getItem('token'); // Retrieve JWT from localStorage
+
+    try {
+      await axios.put('http://localhost:5000/profile', formData, {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+      alert('Preferences updated successfully!');
+    } catch (error) {
+      console.error('Error updating preferences:', error);
+      alert('Failed to update preferences. Please try again.');
+    }
+  };
+
+  return (
+    <form onSubmit={handleSubmit}>
+      {/* Dietary Preferences Input */}
+      <div>
+        <label>Dietary Preferences (comma-separated):</label>
+        <input
+          type="text"
+          name="dietary"
+          value={formData.dietary}
+          onChange={handleChange}
+          placeholder="e.g., vegan, halal, gluten-free"
+        />
+      </div>
+
+      {/* Location Input */}
+      <div>
+        <label>Location:</label>
+        <input
+          type="text"
+          name="location"
+          value={formData.location}
+          onChange={handleChange}
+          placeholder="e.g., Seoul, South Korea"
+        />
+      </div>
+
+      {/* Distance Radius Input */}
+      <div>
+        <label>Distance Radius (km):</label>
+        <input
+          type="number"
+          name="distance_radius"
+          value={formData.distance_radius}
+          onChange={handleChange}
+        />
+      </div>
+
+      {/* Submit Button */}
+      <button type="submit">Save Preferences</button>
+    </form>
+  );
+};
+
+export default PreferencesForm;
