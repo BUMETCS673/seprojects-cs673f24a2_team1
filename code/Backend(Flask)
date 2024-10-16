@@ -8,7 +8,7 @@ app = Flask(__name__)
 @app.route('/profile', methods=['GET'])
 @jwt_required()
 def get_profile():
-    user_id = get_jwt_identity()  # Get the user ID from the JWT token // Can make modification if we want to allow sign-in using Google account
+    user_id = get_jwt_identity()  # Get the user ID from the JWT token
     user = User.query.get(user_id)  # Find the user in the database
     
     if not user:
@@ -46,7 +46,8 @@ def update_profile():
         "distance_radius": distance_radius,
         "price_range": price_range
     }
-    db.session.commit()  # Save the changes
+
+    # Commit the changes to the database
+    db.session.commit()
 
     return jsonify({"msg": "Profile updated successfully"}), 200
-
