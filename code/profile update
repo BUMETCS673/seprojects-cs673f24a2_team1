@@ -1,0 +1,52 @@
+from flask import Flask, request, jsonify
+from flask_jwt_extended import jwt_required, get_jwt_identity
+from models import User, db  # Assumed User model is already made during user registration part
+
+app = Flask(__name__)
+
+# Fetch current user's profile
+@app.route('/profile', methods=['GET'])
+@jwt_required()
+def get_profile():
+    user_id = get_jwt_identity()  # Get the user ID from the JWT token // Can make modification if we want to allow sign-in using Google account
+    user = User.query.get(user_id)  # Find the user in the database
+    
+    if not user:
+        return jsonify({"msg": "User not found"}), 404
+
+    # Return the user profile data
+    return jsonify({
+        "username": user.username,
+        "email": user.email,
+        "preferences": user.preferences  # Dietary, location, etc.
+    }), 200
+
+
+# Update user's profile preferences
+@app.route('/profile', methods=['PUT'])
+@jwt_required()
+def update_profile():
+    user_id = get_jwt_identity()  # Get the user ID from the JWT token
+    user = User.query.get(user_id)  # Find the user in the database
+
+    if not user:
+        return jsonify({"msg": "User not found"}), 404
+
+    # Get new preferences from request body
+    data = request.get_json()
+    dietary = data.get('dietary', user.preferences.get('dietary', []))
+    location = data.get('location', user.preferences.get('location', ''))
+    distance_radius = data.get('distance_radius', user.preferences.get('distance_radius', 5))
+    price_range = data.get('price_range', user.preferences.get('price_range', "$$"))
+
+    # Update the user's preferences
+    user.preferences = {
+        "dietary": dietary,
+        "location": location,
+        "distance_radius": distance_radius,
+        "price_range": price_range
+    }
+    db.session.commit()  # Save the changes
+
+    return jsonify({"msg": "Profile updated successfully"}), 200
+
