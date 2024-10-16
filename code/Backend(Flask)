@@ -37,14 +37,12 @@ def update_profile():
     dietary = data.get('dietary', user.preferences.get('dietary', []))
     location = data.get('location', user.preferences.get('location', ''))
     distance_radius = data.get('distance_radius', user.preferences.get('distance_radius', 5))
-    price_range = data.get('price_range', user.preferences.get('price_range', "$$"))
 
     # Update the user's preferences
     user.preferences = {
         "dietary": dietary,
         "location": location,
         "distance_radius": distance_radius,
-        "price_range": price_range
     }
 
     # Commit the changes to the database
