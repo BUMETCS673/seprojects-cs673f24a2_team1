@@ -15,7 +15,7 @@ pipeline {
                     // Build the backend container (Flask)
                     sh '''
                     cd code/server
-                    docker build -t menumatch-backend .
+                    docker build -f Dockerfile.dev -t menumatch-backend .
                     '''
                 }
             }
@@ -27,7 +27,7 @@ pipeline {
                     // Build the frontend container (React)
                     sh '''
                     cd code/menumatch
-                    docker build -t menumatch-frontend .
+                    docker build -f Dockerfile.dev -t menumatch-frontend .
                     '''
                 }
             }
