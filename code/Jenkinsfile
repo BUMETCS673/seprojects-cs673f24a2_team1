@@ -50,7 +50,7 @@ pipeline {
                         // Run tests for frontend (if any)
                         sh '''
                         cd code/menumatch
-                        echo "Frontend Tests to be run here
+                        echo 'Frontend Tests to be run here'
                         '''
                     }
                 }
