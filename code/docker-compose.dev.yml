@@ -16,7 +16,7 @@ services:
       context: ./menumatch
       dockerfile: Dockerfile.dev
     ports:
-      - "8080:3000"
+      - "3000:3000"
     volumes:
       - ./menumatch:/app
     environment:
