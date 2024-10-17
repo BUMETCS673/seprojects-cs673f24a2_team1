@@ -1,5 +1,7 @@
 pipeline {
-    agent any
+    agent { 
+            label 'develop'
+    }
 
     environment {
         DOCKER_COMPOSE_DEV = 'docker-compose.dev.yml'
@@ -69,7 +71,7 @@ pipeline {
 
         stage('Build and Deploy to Production') {
             agent { 
-                label 'my-defined-label'
+                label 'production'
             }
             when {
                 branch 'main'
