@@ -1,1 +1,39 @@
+# Node.js / Angular
+node_modules/
+dist/
+npm-debug.log
+yarn-error.log
+package-lock.json
+yarn.lock
+coverage/
+src/**/*.spec.ts
+*.tsbuildinfo
+
+# Python / Flask
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.db
+*.sqlite3
+*.log
+*.env
+instance/
+venv/
+*.egg-info/
+*.egg
+*.whl
+.Python
+*.py[cod]
+
+# System Files
 .DS_Store
+Thumbs.db
+ehthumbs.db
+*.swp
+*.swo
+
+# IDE Files
+.vscode/
+.idea/
+*.iml
