@@ -91,7 +91,7 @@ pipeline {
     post {
         always {
             // Clean up Docker containers and networks
-            sh 'docker-compose down'
+            sh 'cd code && docker-compose down'
         }
         success {
             echo 'Pipeline succeeded!'
