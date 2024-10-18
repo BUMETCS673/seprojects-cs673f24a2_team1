@@ -6,6 +6,7 @@ This project focuses on building a restaurant review platform tailored for users
 ## Motivation
 The idea for this project emerged from the challenges faced by international students and others with dietary restrictions, particularly in Boston. General restaurant reviews often lack specific information about how suitable a restaurant is for particular diets. This platform addresses that gap, offering users a way to filter restaurants and reviews to meet their unique requirements.
 
+### JIRA Link: https://menumatch.atlassian.net/browse/MENUMATCH
 ## Features
 ### Essential Features
 - **Food Type Selection**: Users can filter restaurants based on dietary preferences such as vegan, gluten-free, and halal.
