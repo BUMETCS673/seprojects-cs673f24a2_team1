@@ -1,0 +1,18 @@
+# Stage 1: Development - Build the React app
+FROM node:18-alpine
+
+# Set working directory
+WORKDIR /app
+
+# Install dependencies
+COPY package.json /app/package.json
+RUN npm install --silent
+
+# Copy the rest of the source code
+COPY . /app
+
+# Expose port 3000 for React development server
+EXPOSE 3000
+
+# Start React development server
+CMD ["npm", "start"]

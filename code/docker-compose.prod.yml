@@ -1,0 +1,17 @@
+version: '3'
+services:
+  backend:
+    build:
+      context: ./server
+      dockerfile: Dockerfile.prod
+    ports:
+      - "8000:5000"
+    environment:
+      - FLASK_ENV=production
+
+  frontend:
+    build:
+      context: ./menumatch
+      dockerfile: Dockerfile.prod
+    ports:
+      - "8080:80"
