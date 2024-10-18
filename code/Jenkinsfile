@@ -6,7 +6,6 @@ pipeline {
     environment {
         DOCKER_COMPOSE_DEV = 'docker-compose.dev.yml'
         DOCKER_COMPOSE_PROD = 'docker-compose.prod.yml'
-        WORKSPACE="${WORKSPACE}/code"
     }
 
     stages {
@@ -15,8 +14,8 @@ pipeline {
                 script {
                     // Build the backend container (Flask)
                     sh '''
-                    cd server
-                    docker build -t menumatch-backend .
+                    cd code/server
+                    docker build -f Dockerfile.dev -t menumatch-backend .
                     '''
                 }
             }
@@ -27,8 +26,8 @@ pipeline {
                 script {
                     // Build the frontend container (React)
                     sh '''
-                    cd menumatch
-                    docker build -t menumatch-frontend .
+                    cd code/menumatch
+                    docker build -f Dockerfile.dev -t menumatch-frontend .
                     '''
                 }
             }
@@ -40,7 +39,7 @@ pipeline {
                     steps {
                         // Run tests for backend (if any)
                         sh '''
-                        cd server
+                        cd code/server
                         echo "Backend Tests to be run here"
                         '''
                     }
@@ -50,8 +49,8 @@ pipeline {
                     steps {
                         // Run tests for frontend (if any)
                         sh '''
-                        cd menumatch
-                        echo "Frontend Tests to be run here
+                        cd code/menumatch
+                        echo 'Frontend Tests to be run here'
                         '''
                     }
                 }
@@ -63,6 +62,7 @@ pipeline {
                 script {
                     // Deploy the app to development environment
                     sh '''
+                    cd code
                     docker-compose -f $DOCKER_COMPOSE_DEV up -d
                     '''
                 }
@@ -80,6 +80,7 @@ pipeline {
                 script {
                     // Build and deploy for production
                     sh '''
+                    cd code
                     docker-compose -f $DOCKER_COMPOSE_PROD up -d --build
                     '''
                 }
@@ -90,7 +91,7 @@ pipeline {
     post {
         always {
             // Clean up Docker containers and networks
-            sh 'docker-compose down'
+            sh 'cd code && docker-compose down'
         }
         success {
             echo 'Pipeline succeeded!'
