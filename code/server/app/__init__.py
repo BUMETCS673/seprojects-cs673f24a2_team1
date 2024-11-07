@@ -1,24 +1,24 @@
 from flask import Flask
-# from flask_sqlalchemy import SQLAlchemy
-from flask_cors import CORS
+from flask_sqlalchemy import SQLAlchemy
+from flask_migrate import Migrate
 
-# Initialize the database
-# db = SQLAlchemy()
+db = SQLAlchemy()
+migrate = Migrate()
 
 def create_app():
     app = Flask(__name__)
     
-    # Load configuration from config.py
-    app.config.from_object('config.Config')
+    app.config.from_object('app.config.Config')
+    
+    db.init_app(app)
+    migrate.init_app(app, db)
+    
+    from .users import users_bp
+    from .restaurants import restaurants_bp
+    from .reviews import reviews_bp
 
-    # Enable CORS for cross-origin requests
-    CORS(app)
-
-    # Initialize the database with the app
-    # db.init_app(app)
-
-    # Import routes
-    from .routes import main
-    app.register_blueprint(main)
-
+    app.register_blueprint(users_bp, url_prefix="/api/users")
+    app.register_blueprint(restaurants_bp, url_prefix="/api/restaurants")
+    app.register_blueprint(reviews_bp, url_prefix="/api/reviews")
+    
     return app

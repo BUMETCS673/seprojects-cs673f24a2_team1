@@ -2,3 +2,8 @@ Flask==2.0.1
 Flask-Cors==3.0.10
 Werkzeug==2.2.2
 gunicorn
+
+Flask
+Flask-SQLAlchemy
+Flask-Migrate
+python-dotenv
