@@ -37,3 +37,9 @@ ehthumbs.db
 .vscode/
 .idea/
 *.iml
+
+# Database Migrations
+migrations/
+
+#Data Files
+data-files/
