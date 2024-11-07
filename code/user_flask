@@ -1,26 +1,43 @@
 from flask import Flask, render_template_string
 from flask_sqlalchemy import SQLAlchemy
-from flask_user import login_required, UserManager, UserMixin
+from flask_user import UserManager, UserMixin, login_required
+from flask_mail import Mail
 from datetime import datetime
 
 # Configuration class
 class ConfigClass(object):
     """ Flask application config """
+    # Flask settings
     SECRET_KEY = 'This is an INSECURE secret!! DO NOT use this in production!!'
+    
+    # Database settings
     SQLALCHEMY_DATABASE_URI = 'sqlite:///quickstart_app.sqlite'
     SQLALCHEMY_TRACK_MODIFICATIONS = False
-    USER_APP_NAME = "Flask-User QuickStart App"
-    USER_ENABLE_EMAIL = True  # Enable email for user login
-    USER_ENABLE_USERNAME = True
-    USER_REQUIRE_RETYPE_PASSWORD = True
+    
+    # Flask-Mail settings (for sending emails)
+    MAIL_SERVER = 'smtp.example.com'
+    MAIL_PORT = 587
+    MAIL_USE_TLS = True
+    MAIL_USERNAME = 'your-email@example.com'
+    MAIL_PASSWORD = 'your-email-password'
+    MAIL_DEFAULT_SENDER = 'noreply@example.com'
+
+    # Flask-User settings
+    USER_APP_NAME = "Menu Match"
+    USER_ENABLE_EMAIL = True  # Enable email for user login and password reset
+    USER_ENABLE_USERNAME = True  # Enable username login as well
+    USER_REQUIRE_RETYPE_PASSWORD = True  # Require password retype on registration
+    USER_EMAIL_SENDER_NAME = USER_APP_NAME
+    USER_EMAIL_SENDER_EMAIL = 'noreply@example.com'
 
 # Flask application factory
 def create_app():
     app = Flask(__name__)
     app.config.from_object(__name__ + '.ConfigClass')
 
-    # Initialize extensions
+    # Initialize Flask extensions
     db = SQLAlchemy(app)
+    mail = Mail(app)
 
     # Define User model
     class User(db.Model, UserMixin):
@@ -34,9 +51,11 @@ def create_app():
         pass_token_valid_till = db.Column(db.TIMESTAMP, nullable=True)
         active = db.Column('is_active', db.Boolean(), nullable=False, server_default='1')
 
-    db.create_all()
+    # Create all database tables
+    with app.app_context():
+        db.create_all()
 
-    # Set up Flask-User
+    # Setup Flask-User and specify the User data-model
     user_manager = UserManager(app, db, User)
 
     # Home page route
@@ -45,7 +64,7 @@ def create_app():
         return render_template_string("""
             {% extends "flask_user_layout.html" %}
             {% block content %}
-                <h2>Home page</h2>
+                <h2>Welcome to the Menu Match</h2>
                 <p><a href={{ url_for('user.register') }}>Register</a></p>
                 <p><a href={{ url_for('user.login') }}>Sign in</a></p>
                 <p><a href={{ url_for('member_page') }}>Member page</a> (login required)</p>
@@ -53,7 +72,7 @@ def create_app():
             {% endblock %}
             """)
 
-    # Members page route
+    # Members page route, accessible only to logged-in users
     @app.route('/members')
     @login_required
     def member_page():
@@ -61,6 +80,7 @@ def create_app():
             {% extends "flask_user_layout.html" %}
             {% block content %}
                 <h2>Members page</h2>
+                <p>This page is only accessible to logged-in users.</p>
                 <p><a href={{ url_for('home_page') }}>Home page</a></p>
                 <p><a href={{ url_for('user.logout') }}>Sign out</a></p>
             {% endblock %}
