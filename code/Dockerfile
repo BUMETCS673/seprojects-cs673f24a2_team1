@@ -1,0 +1,4 @@
+FROM node:22-alpine
+RUN npm install --global serve
+CMD ["serve","/home"]
+
