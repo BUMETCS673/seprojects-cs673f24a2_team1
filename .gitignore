@@ -39,7 +39,7 @@ ehthumbs.db
 *.iml
 
 # Database Migrations
-migrations/
+# migrations/
 
 #Data Files
 data-files/
