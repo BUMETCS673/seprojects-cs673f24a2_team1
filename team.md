@@ -14,3 +14,6 @@ Introduction: Hi, I'm Dirgha Jivani! I'm currently pursuing my Master's in Compu
 
 Name: Anshul Raj
 Hello, My name is Anshul Raj, and I am currently pursuing a Master's Degree in Computer Science. I completed my undergraduate degree in Computer Science in India and have three years of professional experience, with my most recent position being a Data Scientist. I am proficient in Python, Shell Scripting, Docker, and Git, and I have hands-on experience with tools like JIRA, Jenkins, proxmox, etc which I used in various projects during my career.
+
+## Team Member Introduction
+Hi my name is Pratyush Patel. I have expertise in data analytics, software engineering, and cloud technologies. I have hands-on experience with a wide range of programming languages and frameworks, and am passionate about applying technical skills to solve complex problems.
