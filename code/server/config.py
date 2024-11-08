@@ -1,3 +1,5 @@
+# Author: @Jiho, @Prayushi, @Anshul
+
 import os
 
 class Config:

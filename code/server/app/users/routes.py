@@ -1,3 +1,5 @@
+# Author: @Prayushi, @Jiho
+
 from flask import jsonify, request
 from . import users_bp
 from ..models import db, User
