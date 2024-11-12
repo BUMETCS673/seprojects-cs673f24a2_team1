@@ -45,3 +45,31 @@ def test_login_failure(client):
     })
     assert response.status_code == 401
     assert response.get_json()["error"] == "Invalid credentials"
+
+def test_register_success(client):
+    """Test user registration with valid data."""
+    response = client.post('/api/auth/signup', json={
+        "username": "newuser",
+        "email": "newuser@example.com",
+        "password": "securepassword"
+    })
+    assert response.status_code == 201
+    assert response.get_json()["message"] == "User registered successfully"
+
+def test_register_duplicate_email(client):
+    """Test registration failure with an existing email."""
+    # Pre-create a user
+    client.post('/api/auth/signup', json={
+        "username": "existinguser",
+        "email": "existing@example.com",
+        "password": "securepassword"
+    })
+    
+    # Attempt to register again with the same email
+    response = client.post('/api/auth/signup', json={
+        "username": "newuser",
+        "email": "existing@example.com",
+        "password": "securepassword"
+    })
+    assert response.status_code == 409
+    assert response.get_json()["error"] == "Email already registered"
