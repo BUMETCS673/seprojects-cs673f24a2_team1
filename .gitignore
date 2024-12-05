@@ -14,11 +14,11 @@ __pycache__/
 *.pyc
 *.pyo
 *.pyd
-*.db
+# *.db
 *.sqlite3
 *.log
 *.env
-instance/
+# instance/
 venv/
 *.egg-info/
 *.egg
