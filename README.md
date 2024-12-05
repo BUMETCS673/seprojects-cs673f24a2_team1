@@ -32,7 +32,7 @@ The idea for this project emerged from the challenges faced by international stu
 - **Compliance**: Adherence to GDPR for users in the European Union.
 
 ## Technology Stack
-- **Frontend**: Angular
+- **Frontend**: React + Tailwind + Vite + Typescript
 - **Backend**: Flask
 - **Database**: MongoDB / MySQL (TBD)
 - **Version Control**: Git/GitHub
