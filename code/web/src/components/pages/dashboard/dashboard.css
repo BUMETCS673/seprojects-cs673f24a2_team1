@@ -1,0 +1,45 @@
+.orders-overview-card {
+    border-radius: 12px;
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
+  }
+  
+  .title {
+    font-family: "Roboto", sans-serif;
+    color: #333;
+  }
+  
+  .overview-stats {
+    display: flex;
+    align-items: center;
+  }
+  
+  .timeline-item {
+    display: flex;
+    align-items: center;
+  }
+  
+  .timeline-item .MuiIcon-root {
+    font-size: 24px;
+    margin-right: 8px;
+  }
+  
+  .timeline-item.success .MuiIcon-root {
+    color: #4caf50;
+  }
+  
+  .timeline-item.error .MuiIcon-root {
+    color: #f44336;
+  }
+  
+  .timeline-item.info .MuiIcon-root {
+    color: #2196f3;
+  }
+  
+  .timeline-item.warning .MuiIcon-root {
+    color: #ff9800;
+  }
+  
+  .timeline-item.primary .MuiIcon-root {
+    color: #3f51b5;
+  }
+  

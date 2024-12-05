@@ -1,17 +1,15 @@
 import React from "react";
-import GlobalStyles from './styles/GlobalStyles.js';
-import { css } from "styled-components/macro"; //eslint-disable-line
+import GlobalStyles from './styles/GlobalStyles';
+import { css } from "styled-components/macro"; // eslint-disable-line
 
-import LandingPage from "./pages/LandingPage.js";
-
+import LandingPage from "./pages/LandingPage";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Login from "./pages/Login.js";
-import SignUp from "./pages/SignUp.js"
-import AboutUs from "./pages/AboutUs.js"
-import Map from "./pages/Map.js";
+import Login from "./pages/Login";
+import SignUp from "./pages/SignUp";
+import AboutUs from "./pages/AboutUs";
+import Map from "./pages/Map";
 
-export default function App() {
-
+const App: React.FC = () => {
   return (
     <>
       <GlobalStyles />
@@ -26,4 +24,6 @@ export default function App() {
       </Router>
     </>
   );
-}
+};
+
+export default App;

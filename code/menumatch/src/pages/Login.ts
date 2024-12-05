@@ -1,6 +1,6 @@
 import React from "react";
 import AnimationRevealPage from "../helpers/AnimationRevealPage.js";
-import { Container as ContainerBase } from "../components/misc/Layouts";
+import { Container as ContainerBase } from "../components/misc/Layouts.js";
 import tw from "twin.macro";
 import styled from "styled-components";
 import {css} from "styled-components/macro"; //eslint-disable-line

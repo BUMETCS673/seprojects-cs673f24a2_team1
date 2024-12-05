@@ -1,0 +1,32 @@
+.map_wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.map_image {
+    width: 40%;
+}
+
+.restaurant_list {
+    width: 40%;
+    height: 100%;
+}
+
+.restaurant_card {
+    background-color: lightgrey;
+    width: 90%;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+.restaurant_image {
+    width: 20%
+}
+
+.resautant_name {
+    display: block;
+    font-weight: bold;
+    font-size: 20px;
+}
