@@ -1,0 +1,103 @@
+pipeline {
+    agent { 
+            label 'develop'
+    }
+
+    environment {
+        DOCKER_COMPOSE_DEV = 'docker-compose.dev.yml'
+        DOCKER_COMPOSE_PROD = 'docker-compose.prod.yml'
+    }
+
+    stages {
+        stage('Build Backend') {
+            steps {
+                script {
+                    // Build the backend container (Flask)
+                    sh '''
+                    cd code/server
+                    docker build -f Dockerfile.dev -t menumatch-backend .
+                    '''
+                }
+            }
+        }
+
+        stage('Build Frontend') {
+            steps {
+                script {
+                    // Build the frontend container (React)
+                    sh '''
+                    cd code/menumatch
+                    docker build -f Dockerfile.dev -t menumatch-frontend .
+                    '''
+                }
+            }
+        }
+
+        stage('Run Tests') {
+            parallel {
+                stage('Backend Tests') {
+                    steps {
+                        // Run tests for backend (if any)
+                        sh '''
+                        cd code/server
+                        echo "Backend Tests to be run here"
+                        '''
+                    }
+                }
+
+                stage('Frontend Tests') {
+                    steps {
+                        // Run tests for frontend (if any)
+                        sh '''
+                        cd code/menumatch
+                        echo 'Frontend Tests to be run here'
+                        '''
+                    }
+                }
+            }
+        }
+
+        stage('Deploy to Development') {
+            steps {
+                script {
+                    // Deploy the app to development environment
+                    sh '''
+                    cd code
+                    docker-compose -f $DOCKER_COMPOSE_DEV up -d
+                    '''
+                }
+            }
+        }
+
+        stage('Build and Deploy to Production') {
+            agent { 
+                label 'production'
+            }
+            when {
+                branch 'main'
+            }
+            steps {
+                script {
+                    // Build and deploy for production
+                    sh '''
+                    cd code
+                    docker-compose -f $DOCKER_COMPOSE_PROD up -d --build
+                    '''
+                }
+            }
+        }
+    }
+
+    post {
+        always {
+            // Clean up Docker containers and networks
+            sh 'cd code && docker-compose down'
+        }
+        success {
+            echo 'Pipeline succeeded!'
+        }
+        failure {
+            echo 'Pipeline failed.'
+        }
+    }
+}
