@@ -19,8 +19,7 @@ function Header() {
         </nav>
         {/* Authentication Links */}
         <div className="space-x-4">
-          <Link to="/login" className="text-gray-700 hover:text-red-500">Login</Link>
-          <Link to="/signup" className="bg-red-500 text-white px-4 py-2 rounded-md">Sign Up</Link>
+          <Link to="/login" className="bg-red-500 text-white px-4 py-2 rounded-md">Login</Link>
         </div>
       </div>
     </header>

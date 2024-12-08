@@ -1,6 +1,12 @@
 // src/pages/About.tsx
 import Footer from '../components/Footer';
 import Header from '../components/Header';
+import Custom from '../assets/customize.png'
+import Community from '../assets/community.png'
+import Global from '../assets/global.png'
+import CEO from "../assets/ceo.png"
+import CTO from "../assets/cto.png"
+import Designer from "../assets/designer.png"
 
 function About() {
   return (
@@ -36,19 +42,19 @@ function About() {
             <div className="flex flex-wrap justify-center space-x-6">
               {/* Feature 1 */}
               <div className="w-64 text-center mb-8">
-                <img src="/assets/icons/customizable.svg" alt="Customizable" className="mx-auto mb-4" />
+                <img src={Custom} alt="Customizable" className="mx-auto mb-4 w-20" />
                 <h3 className="text-xl font-semibold">Customizable Searches</h3>
                 <p>Filter restaurants based on your dietary preferences.</p>
               </div>
               {/* Feature 2 */}
               <div className="w-64 text-center mb-8">
-                <img src="/assets/icons/community.svg" alt="Community" className="mx-auto mb-4" />
+                <img src={Community} alt="Community" className="mx-auto mb-4 w-20" />
                 <h3 className="text-xl font-semibold">Community Reviews</h3>
                 <p>Read and write reviews from users with similar needs.</p>
               </div>
               {/* Feature 3 */}
               <div className="w-64 text-center mb-8">
-                <img src="/assets/icons/global.svg" alt="Global" className="mx-auto mb-4" />
+                <img src={Global} alt="Global" className="mx-auto mb-4 w-20" />
                 <h3 className="text-xl font-semibold">Global Reach</h3>
                 <p>Helping users worldwide find suitable dining options.</p>
               </div>
@@ -64,7 +70,7 @@ function About() {
               {/* Team Member 1 */}
               <div className="w-64 text-center mb-8 mx-4">
                 <img
-                  src="/assets/team/member1.jpg"
+                  src={CEO}
                   alt="Team Member 1"
                   className="w-40 h-40 rounded-full mx-auto mb-4 object-cover"
                 />
@@ -74,7 +80,7 @@ function About() {
               {/* Team Member 2 */}
               <div className="w-64 text-center mb-8 mx-4">
                 <img
-                  src="/assets/team/member2.jpg"
+                  src={CTO}
                   alt="Team Member 2"
                   className="w-40 h-40 rounded-full mx-auto mb-4 object-cover"
                 />
@@ -84,7 +90,7 @@ function About() {
               {/* Team Member 3 */}
               <div className="w-64 text-center mb-8 mx-4">
                 <img
-                  src="/assets/team/member3.jpg"
+                  src={Designer}
                   alt="Team Member 3"
                   className="w-40 h-40 rounded-full mx-auto mb-4 object-cover"
                 />
