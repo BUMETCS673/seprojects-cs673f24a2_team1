@@ -2,7 +2,10 @@
   "compilerOptions": {
     "target": "ES6",
     "module": "ESNext",
-    "lib": ["DOM", "ESNext"],
+    "lib": [
+      "DOM",
+      "ESNext"
+    ],
     "jsx": "react-jsx",
     "jsxImportSource": "react",
     "baseUrl": "src",
@@ -13,11 +16,32 @@
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "paths": {
-      "components/*": ["components/*"],
-      "images/*": ["images/*"]
+      "components/*": [
+        "components/*"
+      ],
+      "images/*": [
+        "images/*"
+      ],
+      "test-utils": [
+        "./utils/test-utils"
+      ]
     },
-    "types": ["node", "@testing-library/jest-dom", "styled-components", "twin.macro"]
+    "types": [
+      "node",
+      "jest",
+      "@testing-library/jest-dom",
+      "styled-components",
+      "twin.macro"
+    ]
   },
-  "include": ["src", "twin.d.ts", "tailwindcss.d.ts", "tailwind.config.ts"],
-  "exclude": ["node_modules", "dist"]
+  "include": [
+    "src",
+    "twin.d.ts",
+    "tailwindcss.d.ts",
+    "tailwind.config.ts"
+, "src/__tests__/.d.ts", "jest.environment.ts"  ],
+  "exclude": [
+    "node_modules",
+    "dist"
+  ]
 }

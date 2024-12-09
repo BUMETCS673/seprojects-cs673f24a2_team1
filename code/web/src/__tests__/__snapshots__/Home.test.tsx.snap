@@ -1,0 +1,337 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Home Page matches snapshot 1`] = `
+<DocumentFragment>
+  <header
+    class="bg-white shadow-md fixed top-0 left-0 right-0 z-50"
+  >
+    <div
+      class="container mx-auto flex items-center justify-between p-4"
+    >
+      <a
+        class="text-2xl font-bold text-red-500"
+        data-discover="true"
+        href="/"
+      >
+        MenuMatch
+      </a>
+      <nav
+        class="space-x-6"
+      >
+        <a
+          class="text-gray-700 hover:text-red-500"
+          data-discover="true"
+          href="/"
+        >
+          Home
+        </a>
+        <a
+          class="text-gray-700 hover:text-red-500"
+          data-discover="true"
+          href="/restaurants"
+        >
+          Restaurants
+        </a>
+        <a
+          class="text-gray-700 hover:text-red-500"
+          data-discover="true"
+          href="/about"
+        >
+          About Us
+        </a>
+        <a
+          class="text-gray-700 hover:text-red-500"
+          data-discover="true"
+          href="/contact"
+        >
+          Contact
+        </a>
+      </nav>
+      <div
+        class="space-x-4"
+      >
+        <a
+          class="bg-red-500 text-white px-4 py-2 rounded-md"
+          data-discover="true"
+          href="/login"
+        >
+          Login
+        </a>
+      </div>
+    </div>
+  </header>
+  <main
+    class="flex flex-col items-center"
+  >
+    <section
+      class="w-full bg-cover bg-center h-screen"
+      style="background-image: url(test-file-stub);"
+    >
+      <div
+        class="flex flex-col items-center justify-center h-full bg-black bg-opacity-50"
+      >
+        <h1
+          class="text-white text-5xl font-bold mb-4"
+        >
+          Find Your Perfect Meal
+        </h1>
+        <p
+          class="text-white text-xl mb-6"
+        >
+          Discover restaurants that cater to your dietary needs
+        </p>
+        <div
+          class="relative w-80"
+        >
+          <input
+            class="p-3 rounded-md w-full"
+            placeholder="Search for restaurants..."
+            type="text"
+            value=""
+          />
+        </div>
+        <div
+          class="flex mt-6 space-x-4"
+        >
+          <a
+            data-discover="true"
+            href="/restaurants?dietaryPreference=vegan"
+          >
+            <button
+              class="bg-green-500 text-white px-4 py-2 rounded"
+            >
+              Vegan
+            </button>
+          </a>
+          <a
+            data-discover="true"
+            href="/restaurants?dietaryPreference=gluten_free"
+          >
+            <button
+              class="bg-yellow-500 text-white px-4 py-2 rounded"
+            >
+              Gluten-Free
+            </button>
+          </a>
+          <a
+            data-discover="true"
+            href="/restaurants?dietaryPreference=vegetarian"
+          >
+            <button
+              class="bg-blue-500 text-white px-4 py-2 rounded"
+            >
+              Vegetarian
+            </button>
+          </a>
+        </div>
+      </div>
+    </section>
+    <section
+      class="py-16 px-4"
+    >
+      <h2
+        class="text-3xl font-bold text-center mb-12"
+      >
+        Why Use MenuMatch?
+      </h2>
+      <div
+        class="flex flex-wrap justify-center space-x-6"
+      >
+        <div
+          class="w-64 text-center mb-8"
+        >
+          <img
+            alt="Filter"
+            class="mx-auto mb-4 w-20"
+            src="test-file-stub"
+          />
+          <h3
+            class="text-xl font-semibold"
+          >
+            Customized Filtering
+          </h3>
+          <p>
+            Find restaurants that meet your specific dietary preferences.
+          </p>
+        </div>
+        <div
+          class="w-64 text-center mb-8"
+        >
+          <img
+            alt="Review"
+            class="mx-auto mb-4  w-20"
+            src="test-file-stub"
+          />
+          <h3
+            class="text-xl font-semibold"
+          >
+            Curated Reviews
+          </h3>
+          <p>
+            Read reviews from users with similar dietary needs.
+          </p>
+        </div>
+        <div
+          class="w-64 text-center mb-8"
+        >
+          <img
+            alt="Mobile"
+            class="mx-auto mb-4  w-20"
+            src="test-file-stub"
+          />
+          <h3
+            class="text-xl font-semibold"
+          >
+            Accessible Anywhere
+          </h3>
+          <p>
+            Use our platform on both web and mobile devices.
+          </p>
+        </div>
+      </div>
+    </section>
+    <section
+      class="bg-gray-100 py-16 px-4"
+    >
+      <h2
+        class="text-3xl font-bold text-center mb-12"
+      >
+        What Our Users Say
+      </h2>
+      <div
+        class="flex flex-wrap justify-center space-x-6"
+      >
+        <div
+          class="w-80 bg-white p-6 rounded-md shadow-md mb-8"
+        >
+          <p
+            class="italic"
+          >
+            "MenuMatch helped me find amazing vegan restaurants when I moved to Boston."
+          </p>
+          <h4
+            class="mt-4 font-semibold"
+          >
+            - Alex, Vegan
+          </h4>
+        </div>
+        <div
+          class="w-80 bg-white p-6 rounded-md shadow-md mb-8"
+        >
+          <p
+            class="italic"
+          >
+            "As someone who eats vegetarian, this platform is a lifesaver."
+          </p>
+          <h4
+            class="mt-4 font-semibold"
+          >
+            - Fatima, Vegetarian
+          </h4>
+        </div>
+        <div
+          class="w-80 bg-white p-6 rounded-md shadow-md mb-8"
+        >
+          <p
+            class="italic"
+          >
+            "Finding gluten-free options has never been easier!"
+          </p>
+          <h4
+            class="mt-4 font-semibold"
+          >
+            - John, Gluten-Free
+          </h4>
+        </div>
+      </div>
+    </section>
+    <section
+      class="py-16 px-4 text-center"
+    >
+      <h2
+        class="text-3xl font-bold mb-6"
+      >
+        Join MenuMatch Today
+      </h2>
+      <p
+        class="mb-8"
+      >
+        Sign up to start discovering restaurants that fit your dietary needs.
+      </p>
+      <a
+        data-discover="true"
+        href="/login"
+      >
+        <button
+          class="bg-red-500 text-white px-6 py-3 rounded-md text-lg"
+        >
+          Get Started
+        </button>
+      </a>
+    </section>
+  </main>
+  <footer
+    class="bg-gray-800 text-white mt-16"
+  >
+    <div
+      class="container mx-auto py-8 flex flex-col md:flex-row justify-between items-center"
+    >
+      <a
+        class="text-2xl font-bold mb-4 md:mb-0"
+        data-discover="true"
+        href="/"
+      >
+        MenuMatch
+      </a>
+      <div
+        class="space-x-6"
+      >
+        <a
+          class="hover:text-red-500"
+          data-discover="true"
+          href="/privacy"
+        >
+          Privacy Policy
+        </a>
+        <a
+          class="hover:text-red-500"
+          data-discover="true"
+          href="/terms"
+        >
+          Terms of Service
+        </a>
+      </div>
+      <div
+        class="space-x-4 mt-4 md:mt-0"
+      >
+        <a
+          aria-label="Facebook"
+          class="hover:text-red-500"
+          href="#"
+        >
+          FB
+        </a>
+        <a
+          aria-label="Twitter"
+          class="hover:text-red-500"
+          href="#"
+        >
+          TW
+        </a>
+        <a
+          aria-label="Instagram"
+          class="hover:text-red-500"
+          href="#"
+        >
+          IG
+        </a>
+      </div>
+    </div>
+    <div
+      class="text-center py-4 bg-gray-900"
+    >
+      © 2024 MenuMatch. All rights reserved.
+    </div>
+  </footer>
+</DocumentFragment>
+`;
