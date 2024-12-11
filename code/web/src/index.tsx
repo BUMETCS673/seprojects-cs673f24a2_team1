@@ -16,7 +16,7 @@ root.render(
       domain="dev-hx28tfgen1xje3pq.us.auth0.com"
       clientId="ltsgF6xq4PJccTVWqDUZ1tlXjMrTrEec"
       authorizationParams={{
-        redirect_uri: "localhost:4173",
+        redirect_uri: "localhost",
         audience: "https://dev-hx28tfgen1xje3pq.us.auth0.com/api/v2/",
         scope: "read:current_user update:current_user_metadata"
       }}
