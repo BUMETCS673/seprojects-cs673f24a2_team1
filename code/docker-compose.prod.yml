@@ -14,4 +14,7 @@ services:
       context: ./web
       dockerfile: Dockerfile.prod
     ports:
-      - "80:80"
+      - "80:4173"
+networks:
+  t1:
+    driver: bridge
