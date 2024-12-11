@@ -3,6 +3,7 @@
 from . import db
 from datetime import datetime
 
+
 class User(db.Model):
    __tablename__ = 'user'
    
@@ -25,6 +26,9 @@ class Restaurant(db.Model):
    name = db.Column(db.String(100), nullable=False)
    address = db.Column(db.String(255))
    phone = db.Column(db.String(20))
+   photo_ref = db.Column(db.String(1023))
+   google_url = db.Column(db.String(1023))
+   price_level = db.Column(db.DECIMAL)
    # cuisine_type = db.Column(db.String(50))
    overall_rating = db.Column(db.DECIMAL)
    vegan_rating = db.Column(db.DECIMAL)

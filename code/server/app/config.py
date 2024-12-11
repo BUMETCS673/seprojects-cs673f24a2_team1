@@ -1,4 +1,4 @@
-# Author: @Jiho, @Anshul, @Prayushi
+# Author: @Roshni, @Jiho, @Prayushi
 
 import os
 
