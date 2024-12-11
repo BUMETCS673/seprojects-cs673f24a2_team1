@@ -37,7 +37,7 @@ In the development environment, the backend Flask app runs in development mode, 
 	```
 2. The services should now be accessible at:
 
--   **Frontend (React)**: http://localhost:3000
+-   **Frontend (React)**: http://localhost
 -   **Backend (Flask)**: http://localhost:5000
 #### Notes:
 
