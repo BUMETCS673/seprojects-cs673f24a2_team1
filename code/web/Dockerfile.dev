@@ -1,20 +1,9 @@
-# Dockerfile for Development
-FROM node:20
+FROM node:20-alpine
 
-# Set the working directory
-WORKDIR /usr/src/app
+WORKDIR /app
+COPY . /app/
 
-# Copy package.json and yarn.lock
-COPY package.json ./
-
-# Install dependencies
-RUN yarn install
-
-# Copy the rest of the application code
-COPY . .
-
-# Expose the development port
-EXPOSE 5173
-
-# Start the development server
-CMD ["yarn", "dev"]
+RUN ["yarn", "install"]
+RUN ["yarn", "build"]
+EXPOSE 4173
+CMD ["yarn","preview","--host"]
