@@ -38,7 +38,7 @@ In the development environment, the backend Flask app runs in development mode, 
 2. The services should now be accessible at:
 
 -   **Frontend (React)**: http://localhost:3000
--   **Backend (Flask)**: http://localhost:8000
+-   **Backend (Flask)**: http://localhost:5000
 #### Notes:
 
 -   Any changes you make to the source code will be reflected immediately due to the volume mappings in the development setup.
@@ -56,8 +56,8 @@ In the production environment, the Flask app is served via `gunicorn`, and the R
     
 2.  The services should now be accessible at:
     
-    -   **Frontend (React)**: http://localhost:8080
-    -   **Backend (Flask)**: http://localhost:8000
+    -   **Frontend (React)**: http://localhost
+    -   **Backend (Flask)**: http://localhost:5000
 
 #### Notes:
 
