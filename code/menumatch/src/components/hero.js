@@ -42,13 +42,14 @@ const Actions = styled.div`
 `;
 
 export default ({
-  navLinks = [
-    <NavLinks key={1}>
-      <NavLink href="/about">About</NavLink>
-      <NavLink href="#">Map</NavLink>
-      <NavLink href="/login">Login</NavLink>
-    </NavLinks>
-  ],
+  // navLinks = [
+  //   <NavLinks key={1}>
+  //     <NavLink href="/about">About</NavLink>
+  //     <NavLink href="#">Map</NavLink>
+  //     <NavLink href="/login">Login</NavLink>
+  //   </NavLinks>
+  // ],
+  navLinks = [],
   heading = (
     <>
       Find Perfect Restaurants
@@ -58,10 +59,10 @@ export default ({
     </>
   ),
   description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse in lacus faucibus, pharetra dui eu, bibendum libero.",
-  primaryActionUrl = "/signup",
-  primaryActionText = "Sign Up",
+  primaryActionUrl = "/login",
+  primaryActionText = "Login",
   secondaryActionUrl = "#",
-  secondaryActionText = "Search Resaturants"
+  secondaryActionText = "Search"
 }) => {
   return (
     <Container>

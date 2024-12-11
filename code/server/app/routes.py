@@ -1,4 +1,4 @@
-# Author: @Anshul
+# Author: @Anshul, @Prayushi
 
 from flask import Blueprint, request, jsonify
 # from .models import db, Restaurant, Review
