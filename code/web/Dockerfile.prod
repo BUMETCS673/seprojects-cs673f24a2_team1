@@ -1,0 +1,29 @@
+# Dockerfile for Production
+FROM node:20 as build
+
+# Set the working directory
+WORKDIR /usr/src/app
+
+# Copy package.json and yarn.lock
+COPY package.json ./
+
+# Install dependencies
+RUN yarn install
+
+# Copy the rest of the application code
+COPY . .
+
+# Build the application
+RUN yarn build
+
+# Serve the application using a lightweight web server
+FROM nginx:stable-alpine
+
+# Copy build output to nginx html directory
+COPY --from=build /usr/src/app/build /usr/share/nginx/html
+
+# Expose the production port
+EXPOSE 80
+
+# Start nginx server
+CMD ["nginx", "-g", "daemon off;"]

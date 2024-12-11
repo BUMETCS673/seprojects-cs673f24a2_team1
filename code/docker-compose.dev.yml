@@ -5,7 +5,7 @@ services:
       context: ./server
       dockerfile: Dockerfile.dev
     ports:
-      - "8000:5000"
+      - "5000:5000"
     volumes:
       - ./server:/app
     environment:
@@ -13,11 +13,11 @@ services:
 
   frontend:
     build:
-      context: ./menumatch
+      context: ./web
       dockerfile: Dockerfile.dev
     ports:
-      - "3000:3000"
+      - "3000:5173"
     volumes:
-      - ./menumatch:/app
+      - ./web:/app
     environment:
       - CHOKIDAR_USEPOLLING=true
