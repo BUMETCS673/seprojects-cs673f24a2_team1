@@ -1,0 +1,5 @@
+AUTH0_CLIENT_ID='ltsgF6xq4PJccTVWqDUZ1tlXjMrTrEec'
+AUTH0_CLIENT_SECRET='SKT2bQjTGL1j_7uuvO6vaDyi9KSqNUbJXUHf7qUicDr-8iVOV6IMrVyddguKwoiZ'
+AUTH0_DOMAIN='dev-hx28tfgen1xje3pq.us.auth0.com'
+AUTH0_CALLBACK_URL='http://127.0.0.1:5000/api/auth/callback'
+AUTH0_LOGOUT_URL='http://127.0.0.1:5000/'

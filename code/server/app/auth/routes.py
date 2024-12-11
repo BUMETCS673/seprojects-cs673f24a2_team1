@@ -1,12 +1,14 @@
 # Author: @Jiho, @Prayushi
 # Editor: @Anshul
 
-from flask import jsonify, request
+from flask import jsonify, redirect, request, session, url_for
 from werkzeug.security import generate_password_hash, check_password_hash
-from flask_jwt_extended import create_access_token, jwt_required, get_jwt_identity
+from functools import wraps
+
 from . import auth_bp
 from ..models import db, User
-from datetime import timedelta
+import requests
+from ..auth0_config import *
 
 # Register (Sign Up)
 @auth_bp.route('/signup', methods=['POST'])
@@ -30,32 +32,54 @@ def signup():
     return jsonify({"message": "User registered successfully"}), 201
 
 # Login
-@auth_bp.route('/login', methods=['POST'])
+@auth_bp.route('/login')
 def login():
-    data = request.get_json()
-    if not data or not data.get('email') or not data.get('password'):
-        return jsonify({"error": "Invalid data"}), 400
+    return redirect(f"https://{AUTH0_DOMAIN}/authorize?response_type=code&client_id={AUTH0_CLIENT_ID}&redirect_uri={AUTH0_CALLBACK_URL}")
     
-    user = User.query.filter_by(email=data['email']).first()
-    if not user or not check_password_hash(user.pass_hash, data['password']):
-        return jsonify({"error": "Invalid credentials"}), 401
+    # data = request.get_json()
+    # if not data or not data.get('email') or not data.get('password'):
+    #     return jsonify({"error": "Invalid data"}), 400
     
-    # Create JWT access token with 1-hour expiry
-    access_token = create_access_token(identity=user.user_id, expires_delta=timedelta(hours=1))
-    return jsonify({"access_token": access_token, "user_id": user.user_id}), 200
+    # user = User.query.filter_by(email=data['email']).first()
+    # if not user or not check_password_hash(user.pass_hash, data['password']):
+    #     return jsonify({"error": "Invalid credentials"}), 401
+    
+    # # Create JWT access token with 1-hour expiry
+    # access_token = create_access_token(identity=user.user_id, expires_delta=timedelta(hours=1))
+    # return jsonify({"access_token": access_token, "user_id": user.user_id}), 200
+
+@auth_bp.route('/callback')
+def callback():
+    code = request.args.get('code')
+    token_url = f"https://{AUTH0_DOMAIN}/oauth/token"
+    token_payload = {
+        'grant_type': 'authorization_code',
+        'client_id': AUTH0_CLIENT_ID,
+        'client_secret': AUTH0_CLIENT_SECRET,
+        'code': code,
+        'redirect_uri': AUTH0_CALLBACK_URL,
+    }
+    token_info = requests.post(token_url, json=token_payload).json()
+    session['user'] = token_info
+    return jsonify(token_info)
+
+@auth_bp.route('/logout')
+def logout():
+    session.clear()
+    return redirect(f"https://{AUTH0_DOMAIN}/v2/logout?client_id={AUTH0_CLIENT_ID}&returnTo={AUTH0_LOGOUT_URL}")
+
+def requires_auth(f):
+    @wraps(f)
+    def decorated(*args, **kwargs):
+        if 'user' not in session:
+            # Redirect to login if the user is not authenticated
+            return redirect(url_for('auth_bp.login'))
+        return f(*args, **kwargs)
+    return decorated
 
 # Protected Route for testing
-@auth_bp.route('/protected', methods=['GET'])
-@jwt_required()
+@auth_bp.route('/protected')
+@requires_auth
 def protected():
-    current_user_id = get_jwt_identity()
-    user = User.query.get(current_user_id)
-    return jsonify({"message": f"Hello {user.username}, this is a protected route"}), 200
-
-# Logout (Optional - JWTs are stateless)
-@auth_bp.route('/logout', methods=['POST'])
-@jwt_required()
-def logout():
-    # In a stateless JWT system, logout can be handled on the client side by deleting the token.
-    # Alternatively, we can implement a token blacklist if you need server-side control.
-    return jsonify({"message": "Logged out successfully"}), 200
+    user_info = session.get('user')
+    return jsonify({'message': 'You have access to this route', 'user': user_info})
